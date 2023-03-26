@@ -37,6 +37,11 @@ def liked_article():
 
 @app.route("/not-liked-articles", methods=["POST"])
 def unliked_articles():
+    with open('shared_articles.csv', encoding = "utf8") as f:
+        reader = csv.reader(f)
+        data = list(reader)
+        all_articles = data[1:]
+        
     articles = all_articles[0]
     all_articles = all_articles[1:]
     not_liked_articles.append(articles)
